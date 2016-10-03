@@ -1,15 +1,16 @@
 package Ping
 
 import (
-	"fmt"
+//	"fmt"
 	"log"
 	"os/exec"
+	"os"
 	"regexp"
 	"encoding/json"
 )
 
-func Ping() {
-	out, err := exec.Command("fping","-p 20","-b 1400","-a","-C 20","ns1.irishbroadband.ie").CombinedOutput()
+func Ping( host string ) {
+	out, err := exec.Command("fping", "-p 20", "-b 1400", "-a", "-C 20", host).CombinedOutput()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -20,8 +21,8 @@ func Ping() {
 
 	b, err := json.Marshal( theMatches )
 	if err != nil {
-		fmt.Printf( "%s\n", err )
+		log.Fatal( err )
 	}
-	fmt.Printf( "%s\n", b )
+	os.Stdout.Write( b )
 
 }
