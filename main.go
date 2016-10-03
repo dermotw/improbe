@@ -5,6 +5,7 @@ import (
   "bufio"
   "log"
   "os"
+  "fmt"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
   scanner := bufio.NewScanner( file )
   for scanner.Scan() {
     host := scanner.Text()
-    Ping.Ping( host )
+    r := Ping.Ping( host )
+    fmt.Printf( "%s\n", r )
   }
 }
