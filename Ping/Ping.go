@@ -25,6 +25,6 @@ func Ping( host string ) (b string) {
 	if err != nil {
 		log.Fatal( err )
 	}
-	return b
+	return
 
 }
