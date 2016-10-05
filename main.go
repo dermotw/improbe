@@ -1,13 +1,13 @@
 package main
 
 import (
-  "bytes"
   "improbe/Ping"
   "bufio"
   "log"
   "os"
   "fmt"
   "net/http"
+  "net/url"
 )
 
 // main function
@@ -34,14 +34,10 @@ func main() {
 
     // Set up an HTTP Request object and stuff
     //
-    req, err := http.NewRequest( "POST", "http://10.10.1.106/improbe/results", bytes.NewBuffer( []byte(r) ) )
-    req.Header.Set( "X-Custom-Header", "blah" )
-    req.Header.Set( "Content-Type", "application/json" )
+    theData := url.Values{}
+    theData.Add( "result", r )
+    res, err := http.PostForm( "http://10.10.1.106/improbe/results.php", theData )
 
-    // HTTP client
-    //
-    client := &http.Client{}
-    res, err := client.Do(req)
     if err != nil {
       log.Fatal( err )
     }
