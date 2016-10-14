@@ -1,7 +1,7 @@
 package main
 
 import (
-  "improbe/Ping"
+  "github.com/dermotw/improbe/Ping"
   "bufio"
   "log"
   "os"
