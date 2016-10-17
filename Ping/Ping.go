@@ -5,6 +5,8 @@ import (
 	"os/exec"
 	"regexp"
 	"encoding/json"
+	"time"
+	"strconv"
 )
 
 // Ping function
@@ -42,6 +44,7 @@ func Ping( host string ) (b string) {
 	// we pass the results to the remote server
 	//
 	results := append( theMatches, []string{host} )
+	results = append( results, []string{strconv.FormatInt( time.Now().Unix(), 10 )} )
 
 	// Convert the results array to a JSON object to make it easier to work with
 	//
