@@ -6,8 +6,8 @@ import (
   "log"
   "os"
   "fmt"
-  "net/http"
-  "net/url"
+//  "net/http"
+//  "net/url"
 )
 
 // main function
@@ -31,18 +31,19 @@ func main() {
     // Send the IP address to our Ping function
     //
     r := Ping.Ping( host )
+    fmt.Printf( "%s\n", r )
 
     // Set up an HTTP Request object and stuff
     //
-    theData := url.Values{}
+/*    theData := url.Values{}
     theData.Add( "result", r )
-    res, err := http.PostForm( "http://10.10.1.106/improbe/results.php", theData )
+    res, err := http.PostForm( <url here>, theData )
 
     if err != nil {
       log.Fatal( err )
     }
     defer res.Body.Close()
 
-    fmt.Printf( "%s\n", res.Status )
+    fmt.Printf( "%s\n", res.Status ) */
   }
 }
